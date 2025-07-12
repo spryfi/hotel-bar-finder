@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary - Deep evening blue with purple undertones */
+  --primary-900: #1a1b3a; /* Deep midnight */
+  --primary-800: #2d2e5e; /* Night sky */
+  --primary-700: #3f4082; /* Twilight */
+  --primary-600: #5152a6; /* Primary brand */
+  --primary-500: #6366f1; /* Lighter brand */
+  
+  /* Accent - Warm amber (cocktail/whiskey tones) */
+  --accent-600: #d97706; /* Whiskey */
+  --accent-500: #f59e0b; /* Amber */
+  --accent-400: #fbbf24; /* Golden */
+  
+  /* Supporting - Lounge atmosphere */
+  --wine-600: #7c2d12; /* Wine */
+  --wine-500: #991b1b; /* Merlot */
+  
+  /* Neutrals - Sophisticated grays */
+  --gray-900: #111827;
+  --gray-800: #1f2937;
+  --gray-700: #374151;
+  --gray-600: #4b5563;
+  --gray-500: #6b7280;
+  --gray-400: #9ca3af;
+  --gray-300: #d1d5db;
+  --gray-200: #e5e7eb;
+  --gray-100: #f3f4f6;
+  --gray-50: #f9fafb;
+  
+  /* Glass-morphism */
+  --glass-bg: rgba(26, 27, 58, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, var(--accent-500), var(--accent-400));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[var(--primary-600)] hover:bg-[var(--primary-700)] text-white font-medium px-6 py-3 rounded-lg transition-all duration-200 active:scale-95;
+  }
+  
+  .btn-accent {
+    @apply bg-[var(--accent-500)] hover:bg-[var(--accent-600)] text-white font-medium px-6 py-3 rounded-lg transition-all duration-200 active:scale-95;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5;
+  }
+  
+  .filter-pill {
+    @apply px-4 py-2 rounded-full border transition-all duration-200 cursor-pointer select-none;
+  }
+  
+  .filter-pill-active {
+    @apply bg-[var(--accent-500)] text-white border-[var(--accent-500)];
+  }
+  
+  .filter-pill-inactive {
+    @apply bg-white text-gray-700 border-gray-300 hover:border-[var(--accent-400)];
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-400);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-500);
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Shake animation for cocktail loading */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px) rotate(-2deg); }
+  75% { transform: translateX(2px) rotate(2deg); }
+}
+
+.animate-shake {
+  animation: shake 0.8s ease-in-out infinite;
+}
